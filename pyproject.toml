@@ -1,0 +1,11 @@
+[project]
+name = "swiss-knife"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = ["typer", "pandas", "python-pptx"]
+
+[project.scripts]
+swissknife = "swissknife.cli:app"
+
+[tool.ruff]
+line-length = 100

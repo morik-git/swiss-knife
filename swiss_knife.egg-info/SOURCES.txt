@@ -1,0 +1,13 @@
+README.md
+pyproject.toml
+swiss_knife.egg-info/PKG-INFO
+swiss_knife.egg-info/SOURCES.txt
+swiss_knife.egg-info/dependency_links.txt
+swiss_knife.egg-info/entry_points.txt
+swiss_knife.egg-info/requires.txt
+swiss_knife.egg-info/top_level.txt
+swissknife/__init__.py
+swissknife/cli.py
+swissknife/csv_tools.py
+swissknife/pptx_tools.py
+tests/test_csv.py

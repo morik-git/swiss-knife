@@ -1,0 +1,26 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# OS/IDE
+.DS_Store
+.vscode/
+
+# Secrets
+*.key
+*.pem
+*.pfx
+*_key*.txt
+*token*.txt
+.env
+.env.*
+
+# Data / outputs (必要なら外す)
+*.csv
+*.xlsx
+*.pptx
+*.docx
+*.pdf
+output/
+data/
