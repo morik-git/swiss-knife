@@ -5,14 +5,11 @@ from typing import List
 import typer
 
 from .csv_tools import concat_csv, join_csv
-from .pptx_tools import merge_pptx
 
 app = typer.Typer(no_args_is_help=True)
 csv_app = typer.Typer(no_args_is_help=True)
-pptx_app = typer.Typer(no_args_is_help=True)
 
 app.add_typer(csv_app, name="csv")
-app.add_typer(pptx_app, name="pptx")
 
 
 @csv_app.command("concat")
@@ -33,13 +30,4 @@ def csv_join(
     output: str = typer.Option(..., "--output", "-o", help="Output CSV path"),
 ) -> None:
     join_csv(left, right, on, how, output)
-    typer.echo(f"written: {output}")
-
-
-@pptx_app.command("merge")
-def pptx_merge(
-    inputs: List[str] = typer.Argument(..., help="Input PPTX paths"),
-    output: str = typer.Option(..., "--output", "-o", help="Output PPTX path"),
-) -> None:
-    merge_pptx(inputs, output)
     typer.echo(f"written: {output}")
