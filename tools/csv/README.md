@@ -46,3 +46,4 @@ git add tools/csv/README.md
 git commit -m "Add minimal CSV tool README"
 git push
 ```
+※ samples 配下の CSV はローカル検証用であり、Git 管理対象外です（.gitignore）。

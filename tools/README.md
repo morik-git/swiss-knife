@@ -41,4 +41,4 @@ python -m swissknife csv join `
   --how "inner" `
   --output "C:\path\to\joined.csv"
 ```   
-サンプルCSVは `tools/csv/samples/join/` に配置しています。
+※ CSV samples はローカル検証用のため、Git 管理対象外です。
