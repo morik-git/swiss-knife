@@ -1,64 +1,66 @@
 # swiss-knife
 
-EN: A practical CLI toolbox to batch-process business files (CSV, PPTX, …) reproducibly.  
-JP: 業務ファイル（CSV / PPTX など）を再現可能な形で一括処理するための CLI ツール集です。
+日常業務や技術検証で頻出する「ちょっとした処理」を、  
+再利用可能な最小ツール（MVP）として集約した ToolBox リポジトリです。
+
+This repository is a toolbox of small, reusable MVP tools designed to solve
+common day-to-day data processing and technical tasks.
 
 ---
 
-## What it does / できること
+## できること（What it does）
 
-### CSV (MVP)
-EN: Concatenate multiple CSVs, join two CSVs.  
-JP: 複数CSVの結合（縦連結）、2つのCSVの結合（join）
+### CSV（MVP）
+複数CSVの結合（縦連結）や、2つのCSVの結合（join）を行います。  
+日常業務で発生するデータ加工を、スクリプトとして再現可能な形で素早く実行できます。
 
-### PPTX (MVP)
-EN: Merge multiple PPTX files (with limitations).  
-JP: 複数PPTXの統合（制約あり：崩れる可能性があるため注意）
-
----
-
-## Roadmap (short) / ロードマップ（簡易）
-
-- EN: v0.1 CSV merge/join for day-to-day data work (done)  
-  JP: v0.1 日常業務向けの CSV 結合／join（完了）
-
-- EN: v0.2 PPTX merge with clearer constraints and safer defaults  
-  JP: v0.2 PPTX 統合の制約整理と安全なデフォルトの導入
-
-- EN: v0.x Add more “swiss-knife” utilities (PDF merge, normalization, validation, etc.)  
-  JP: v0.x 便利ツールを順次追加（PDF結合、正規化、検証など）
+Concatenate multiple CSV files and join two CSVs.  
+Designed to make day-to-day data processing quick and reproducible via scripts.
 
 ---
 
-## Testing / テスト方針（最小）
+### Web Docs 抽出 - PowerShell（Web Docs Extraction - PowerShell）
+CSVに列挙したWebドキュメントURLから、本文（article / main）を自動抽出し、  
+1つのTXTファイルに統合します。  
+途中再開（stateファイル）とエラーログ出力に対応しており、  
+大量ページ・長時間処理でも安定して運用できる設計です。
 
-EN:
-- Tests are organized per tool under `tests/<tool>/` and run with `pytest`.
-- For small scale, we run the full test suite on CI (no diff-based selection).
-- CSV concat tests validate that **output data row count** equals the **sum of input data rows** (excluding header lines).
-
-JP:
-- テストはツール単位で `tests/<tool>/` に配置し、`pytest` で実行します。
-- 小規模プロジェクトのため、CIでは差分判定をせず毎回フル実行します。
-- CSV結合は、ヘッダー行を除外した **データ行数** が「入力合計＝出力」と一致することをテストします。
-
-EN: See `docs/TESTING.md` for details.  
-JP: 詳細は `docs/TESTING.md` を参照してください。
+Extracts main content (article / main) from web documentation pages listed in a CSV
+and merges them into a single TXT file.  
+Supports resume via a state file and outputs an error log, making it suitable for
+large-scale and long-running extraction tasks.
 
 ---
 
-## Quick start (Docker on Windows) / クイックスタート（Windows＋Docker）
+## 対象ユーザー（Who is this for）
+- 日常的にCSVやテキストデータを扱うエンジニア
+- 技術ドキュメントを一括取得・整理したい人
+- 検証用データを素早く再現可能な形で用意したい人
 
-EN: This project is designed to work even when local Python installation is constrained.  
-JP: ローカルPCに Python 実体を入れにくい環境でも動かせる運用を前提にしています。
+- Engineers who frequently work with CSV and text data
+- Anyone who needs to bulk-extract and organize technical documentation
+- Users who want reproducible data preparation for experiments and validation
 
-EN: We mount: repo → `/work`, Windows Downloads → `/data`  
-JP: マウント対応：リポジトリ → `/work`、Windows Downloads → `/data`
+---
 
-### 1) Start container / コンテナ起動（Windows PowerShell）
-```powershell
-docker run -it --rm `
-  -v C:\Users\Morikawa.Tatsuyuki\swiss-knife:/work `
-  -v C:\Users\Morikawa.Tatsuyuki\Downloads:/data `
-  -w /data `
-  python:3.11 bash
+## 方針（Design policy）
+- 小さく、単機能で、再利用しやすい
+- 手動操作を減らし、スクリプトで再現可能にする
+- 「とりあえず動く」ではなく「運用できる」MVPを目指す
+
+- Small, single-purpose, and reusable
+- Reduce manual work and ensure reproducibility via scripts
+- Focus on operational MVPs, not one-off throwaway scripts
+
+---
+
+## ツール一覧（Tools）
+- CSV（MVP）
+- Web Docs 抽出 - PowerShell
+
+See each tool directory for details and usage instructions.
+
+---
+
+## ライセンス（License）
+MIT License
